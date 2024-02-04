@@ -1,0 +1,207 @@
+.subtitle {
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    height: 49px;
+    margin-top: 0;
+    margin-left: 72px;
+    margin-right: 72px;
+    color: #000;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0;
+    margin-bottom: 0;
+    text-align: left;
+    letter-spacing: -0.88px;
+}
+
+
+.project{
+    padding-top: 112px;
+}
+
+.second__point {
+    color: #A0A0A0;
+    text-align: center;
+
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    padding: 0;
+    padding-top: 14px;
+    margin: 0;
+}
+
+
+
+.project__first {
+    max-width: calc(100% - 140px);
+    margin-left: 72px;
+    margin-right: 72px;
+    padding-top: 72px;
+    display: grid;
+    row-gap: 26px;
+    column-gap: 40px;
+    grid-template-columns: minmax(550px, max-content) minmax(550px, max-content);
+    grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content);
+}
+
+.second__point_first-column {
+    background-color: #000;
+    padding: 0;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    margin: 0;
+    color: #FFF;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+
+.second__point_second-column {
+    background-color: #F2F2F2;
+    color: #000;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+.first__header {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+
+.first__point {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+
+
+.project__second {
+    max-width: calc(100% - 140px);
+    margin-left: 72px;
+    margin-right: 72px;
+    margin-top: 110px;
+    margin-bottom: 110px;
+    font-size: 14px;
+    display: grid;
+    row-gap: 0;
+    column-gap: 0;
+    grid-template-columns: minmax(228px, max-content) minmax(912px, max-content);
+    grid-template-rows: minmax(36px, max-content) minmax(36px, max-content);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width: 1270px) {
+    .project__first {
+        grid-template-columns: minmax(319px, 550px) minmax(319px, 550px);
+
+    }
+    .project__second {
+        grid-template-columns: minmax(140px, 228px) minmax(528px, 912px);
+        grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content);
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .project__first {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: calc(100% - 100px);
+        row-gap: 22px;
+        column-gap: 30px;
+        grid-template-columns: minmax(200px, 319px) minmax(200px, 319px);
+    }
+    .project__second {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: calc(100% - 100px);
+        grid-template-columns: minmax(100px, 140px) minmax(184px, 528px);
+        margin-bottom: 90px;
+        margin-top: 93px;
+    }
+
+    .first__point {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .project {
+        padding-top: 90px;
+    }
+    .subtitle {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .project__first {
+        grid-template-columns: 284px;
+        max-width: calc(100% - 36px);
+        column-gap: 0;
+        row-gap: 16px;
+        padding-top: 60px;
+        justify-content: center;
+    }
+    .first__header {
+        font-size: 18px;
+    }
+    .first__header-weeks {
+        grid-row: 3;
+        margin-top: 40px;
+    }
+    .first__point {
+        font-size: 11px;
+    }
+    .project {
+        padding-top: 70px;
+    }
+    .project__second {
+        max-width: calc(100% - 36px);
+        font-size: 11px;
+        margin-bottom: 69px;
+        margin-top: 60px;
+        font-size: 11px;
+    }
+
+    .first__point {
+        font-size: 11px;
+        line-height: 16px;
+    }
+    .second__point_first-column{
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .second__point_second-column{
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .second__point{
+        padding-top: 8px;
+    }
+    .subtitle {
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 18px;
+    }
+}
+
+

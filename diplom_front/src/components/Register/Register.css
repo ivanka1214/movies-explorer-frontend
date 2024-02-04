@@ -1,0 +1,146 @@
+.form_section {
+    width: 396px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+
+.form__logo {
+    width: 38px;
+    height: 38px;
+}
+
+.form__title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: left;
+    margin: 0;
+    margin-top: 37px;
+    margin-bottom: 27px;
+}
+
+.form__block {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__label {
+    color: #A0A0A0;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.form__input {
+    height: 46px;
+    border-radius: 8px;
+    background-color: #F9F9F9;
+    border: none;
+    padding-left: 15px;
+}
+
+.form__span {
+    color: #FF4062;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 10px;
+}
+
+.form__input:focus {
+    outline-color: black;
+}
+
+.form__submit {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    padding: 0;
+    width: 396px;
+    height: 45px;
+    border-radius: 3px;
+    background: #000;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 65px;
+    cursor: pointer;
+}
+.form__submit:hover{
+    opacity: 0.8;
+}
+
+
+.form__question {
+    color: #A0A0A0;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    margin-top: 16px;
+}
+
+.form__link {
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+}
+.form__link:hover{
+    opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+    .form_section {
+        margin-top: 232px;
+        margin-bottom: 232px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .form_section {
+        width: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 56px;
+        margin-bottom: 30px;
+    }
+    .form__title {
+        margin-top: 47px;
+        margin-bottom: 71px;
+    }
+    .form__question {
+        margin-top: 14px;
+        font-size: 12px;
+     }
+    .form__link {
+        font-size: 12px;
+        padding-left: 6px;
+     }
+    .form__link {
+        font-size: 12px;
+        padding-left: 6px;
+     }
+    .form__submit {
+        width: 260px;
+        font-size: 12px;
+        margin-top: 149px;
+    }
+}

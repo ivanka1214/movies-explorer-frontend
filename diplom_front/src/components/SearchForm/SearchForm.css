@@ -42,14 +42,16 @@
     width: 300px;
     display: block;
 }
-
+.search_checkbox {
+    padding-left: 10px;
+}
 .search__button{
     display: flex;
     flex-direction: row;
     align-items: center;
     overflow: hidden;
 }
-.search__submit{
+.search__submit_container{
     border-right: 1px solid rgba(203, 203, 203, 1);
     height: 40px;
     padding-right: 19px;
@@ -99,7 +101,7 @@
     .search{
         margin-bottom: 46px;
     }
-    .search__submit{
+    .search__submit_container{
         border: none;
         padding-right: 0;
     }
@@ -127,7 +129,7 @@
 }
 
 @media screen and (max-width:320px) {
-    .search__submit{
+    .search__submit_container{
         padding-left: 4px;
     }
 }

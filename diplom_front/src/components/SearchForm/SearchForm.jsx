@@ -11,7 +11,7 @@ function SearchForm() {
                     <input id="movie" className="search__input" placeholder="Фильм"
                         type="text" name="movie" required minLength="2" maxLength="40" />
                     <div className='search__button'>
-                        <div className='search__submit'>
+                        <div className='search__submit_container'>
                             <button className='search__submit' type='submit'>Найти</button>
                         </div>
                         <FilterCheckbox class='search_checkbox'></FilterCheckbox>

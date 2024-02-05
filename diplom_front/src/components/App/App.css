@@ -11,6 +11,9 @@ main {
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
 }
+a {
+    font-family: 'Inter', 'Arial', sans-serif;
+}
 .page{
     font-family: 'Inter', 'Arial', sans-serif;
     max-width: 1280px;

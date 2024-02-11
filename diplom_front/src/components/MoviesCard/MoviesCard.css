@@ -1,0 +1,149 @@
+.card {
+    width: 360px;
+    position: relative;
+    cursor: pointer;
+}
+
+.card__image {
+    width: 360px;
+    height: 201px;
+}
+
+.card__block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 11px;
+}
+
+.card__subtitle {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 15px;
+    margin: 0;
+}
+
+.card__time {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 10px;
+    color: #A0A0A0;
+    padding-right: 20px;
+    margin: 0;
+}
+
+.card__save {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    padding: 0;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    border-radius: 30px;
+    background-color: #F9F9F9;
+    width: 72px;
+    height: 21px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 9px;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.card__save_active {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    background-image: url(../../images/active.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    cursor: pointer;
+}
+
+.card__save_delete {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    background-image: url(../../images/delete.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    cursor: pointer;
+}
+
+.card__save:hover {
+    opacity: 0.8;
+}
+
+.card:hover .card__save {
+    visibility: visible;
+}
+
+@media screen and (max-width: 900px) {
+    .card {
+        width: 339px;
+    }
+
+    .card__image {
+        width: 339px;
+        height: 190px;
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .card__block {
+        margin-top: 21px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .card {
+        width: 300px;
+    }
+
+    .card__image {
+        width: 300px;
+        height: 168px;
+    }
+
+    .card__subtitle {
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .card__subtitle {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .card__time {
+        padding-right: 7px;
+    }
+
+    .card__block {
+        margin-top: 12px;
+    }
+
+}

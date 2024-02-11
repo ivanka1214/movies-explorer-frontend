@@ -1,0 +1,73 @@
+.search_checkbox{
+    margin-right: 30px;
+    padding-left: 29px;
+    visibility: visible;
+}
+.checkbox-separeted{
+    margin-right: 30px;
+    padding-left: 29px;
+    visibility: hidden;
+}
+.checkbox-invisible {
+    position: absolute;
+    opacity: 0;
+    width: 40px;
+    height: 20px;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    cursor: pointer;
+} 
+.checkbox-visible{
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle; 
+    width: 36px;
+    height: 20px;
+    background-image: url('../../images/smalltumboff.svg');
+    cursor: pointer;
+}
+.text-checkbox{
+    margin-left: 14px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+.checkbox-invisible:checked+.checkbox-visible{
+    background-image: url('../../images/smalltumb.svg');
+}
+.checkbox-invisible:disabled+.checkbox-visible{
+    background-image: url('../../images/smalltumboff.svg');
+}
+@media screen and (max-width: 768px) {
+    .search_checkbox{
+        padding-left: 19px;
+        margin-right: 20px;
+    }
+}
+@media screen and (max-width: 630px){
+    .search_checkbox{
+        visibility: hidden;
+        width: 1px;
+        height: 1px;
+        margin: 0;
+        display: block;
+        overflow: hidden;
+    }
+    .checkbox-separeted{
+        visibility: visible;
+        display: block;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 45px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .text-checkbox{
+        font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    }
+}

@@ -1,0 +1,176 @@
+.about {
+    padding-top: 115px;
+    position: relative;
+    background-color: #FFF;
+    padding-bottom: 120px;
+}
+.about__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 65px;
+    margin-left: 71px;
+    margin-right: 71px;
+    margin-bottom: 80px;
+}
+
+.about__img {
+    width: 272px;
+    height: 325px;
+    border-radius: 10px;
+}
+
+
+.about__info {
+    max-width: 610px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about__info_name {
+    font-size: 51px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 56px;
+    margin: 0;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+.about__info_job {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0;
+    margin-bottom: 25px;
+}
+.about__info_about {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0;
+}
+
+.about__github {
+    display: block;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+    text-decoration: none;
+    color: #000;
+    margin-top: 120px;
+}
+
+.about__github:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 1025px) {
+    .about__info {
+        max-width: 450px;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .about__info {
+        max-width: 365px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about__info {
+        max-width: 365px;
+    }
+    .about__img {
+        width: 255px;
+        height: 305px;
+
+    }
+    .about {
+        padding-top: 92px;
+        padding-bottom: 92px;
+    }
+    .about__info_name {
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: -1.6px;
+    }
+    .about__info_job {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .about__info_about {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .about__github {
+        margin-top: 98px;
+
+    }
+    .about__container{
+        margin-left: 52px;
+        margin-right: 52px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .about__info {
+        max-width: 225px;
+    }
+}
+
+
+@media screen and (max-width: 675px) {
+    .about__info_name {
+        font-size: 30px;
+        margin-bottom: 18px;
+    }
+}
+
+
+@media screen and (max-width: 590px) {
+    .about__container{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .about__info{
+        margin-top: 42px;
+        max-width: 292px;
+    }
+}
+@media screen and (max-width: 580px) {
+    .about__img {
+        width: 292px;
+        height: 353px;
+        margin-top: 0;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .about__info_job {
+        margin-bottom: 16px;
+        font-size: 11px;
+    }
+    .about {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .about__github {
+        margin-top: 75px;
+    }
+    .about__container{
+        margin-left: 14px;
+        margin-right: 14px;
+        margin-top: 60px;
+        margin-bottom: 70px;
+    }
+    .about__info_about{
+        font-size: 11px;
+        line-height: 16px;
+    }
+}

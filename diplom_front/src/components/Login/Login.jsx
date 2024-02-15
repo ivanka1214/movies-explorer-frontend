@@ -59,7 +59,6 @@ function Login(props) {
           <p className="form__question">
             Ещё не зарегистрированы?
             <Link to="/signup" replace className="form__link">
-              {" "}
               Регистрация
             </Link>
           </p>

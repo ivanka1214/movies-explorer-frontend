@@ -101,7 +101,7 @@ export function deleteMovie(movieId) {
   }).then((res) => checkResponse(res));
 }
 
-export function getSaveMovies() {
+export function getSavedMovies() {
   return fetch(`${MY_API}/movies`, {
     method: "GET",
     headers: {

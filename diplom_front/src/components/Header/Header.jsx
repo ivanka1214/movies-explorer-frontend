@@ -10,7 +10,7 @@ function Header(props) {
         <img className="header__logo" src={logo} alt="логотип" />
       </Link>
       <div className="header__block">
-        <Navigation></Navigation>
+      <Navigation isLoggedIn={props.isLoggedIn}></Navigation>
       </div>
     </header>
   );

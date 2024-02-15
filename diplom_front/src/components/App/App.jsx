@@ -33,20 +33,20 @@ function App() {
 
   useEffect(() => {
     checkToken();
-    getSaveMovies();
+    getSavedMovies();
     if (localStorage.getItem("foundMovies")) {
       setIsMovies(true);
     }
   }, []);
 
-  function handleLog_in({ email, password }) {
+  function handleLogin({ email, password }) {
     mainApi
       .login({ email, password })
       .then((data) => {
         if (data.jwt) {
           localStorage.setItem("token", data.jwt);
           setLoggedIn(true);
-          getSaveMovies();
+          getSavedMovies();
           setCurrentUser(data.data);
           navigate("/movies", { replace: true });
           resetForm();
@@ -61,7 +61,7 @@ function App() {
     mainApi
       .register({ name, email, password })
       .then(() => {
-        handleLog_in({ email, password });
+        handleLogin({ email, password });
         resetForm();
       })
       .catch((error) => {
@@ -82,11 +82,11 @@ function App() {
       });
   }
 
-  function getMovie() {
+  function getMovies() {
     setConnectionError(false);
     setIsLoading(true);
     moviesApi
-      .getMovie()
+      .getMovies()
       .then((movies) => {
         setMovies(movies);
         setIsLoading(false);
@@ -118,16 +118,16 @@ function App() {
     mainApi
       .deleteMovie(card._id)
       .then(() => {
-        getSaveMovies();
+        getSavedMovies();
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  function getSaveMovies() {
+  function getSavedMovies() {
     mainApi
-      .getSaveMovies()
+      .getSavedMovies()
       .then((data) => {
         setSavedMovies(data);
       })
@@ -153,7 +153,7 @@ function App() {
     }
   }
 
-  function output() {
+  function signOut() {
     localStorage.removeItem("token");
     localStorage.clear();
     setLoggedIn(false);
@@ -179,7 +179,7 @@ function App() {
                 onCardSave={handleSaveCard}
                 movies={movies}
                 isLoading={isLoading}
-                onSearch={getMovie}
+                onSearch={getMovies}
               />
             }
           ></Route>
@@ -201,7 +201,7 @@ function App() {
                 loggedIn={loggedIn}
                 element={Profile}
                 answer={answer}
-                output={output}
+                signOut={signOut}
                 handleProfileButton={handleProfileButton}
               />
             }
@@ -224,7 +224,7 @@ function App() {
                 loggedIn={!loggedIn}
                 element={Login}
                 error={loginError}
-                handleLog_in={handleLog_in}
+                handleLogin={handleLogin}
               ></ProtectedRouteElement>
             }
           ></Route>

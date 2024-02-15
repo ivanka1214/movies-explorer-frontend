@@ -1,6 +1,6 @@
 export const API_MOV = "https://api.nomoreparties.co";
 
-export function getMovie() {
+export function getMovies() {
   return fetch(`${API_MOV}/beatfilm-movies`, {
     method: `GET`,
     headers: {

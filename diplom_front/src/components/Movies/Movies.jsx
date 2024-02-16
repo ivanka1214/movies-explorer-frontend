@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-import Resize from "../../utils/Resize";
+import useResize from "../../utils/useResize";
 
 function Movies({
   movies,
@@ -18,7 +18,7 @@ function Movies({
   const [isFilterOn, setFilterOn] = useState();
   const [searchError, setSearchError] = useState(false);
 
-  const size = Resize();
+  const size = useResize();
 
   useEffect(() => {
     searchResult();

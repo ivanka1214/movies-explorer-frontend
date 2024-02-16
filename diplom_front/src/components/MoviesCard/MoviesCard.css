@@ -3,7 +3,11 @@
     position: relative;
     cursor: pointer;
 }
-
+.card_saved{
+    width: 360px;
+    position: relative;
+    cursor: pointer; 
+}
 .card__image {
     width: 360px;
     height: 201px;
@@ -57,34 +61,30 @@
     cursor: pointer;
 }
 
-.card__save_active {
-    display: none;
-    width: 20px;
-    height: 20px;
-    border: 0;
-    background-image: url(../../images/active.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 50%;
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    cursor: pointer;
+.card__save_saved{
+    background-image: url('../../images/active.png');
+    background-color: transparent;
+    width: 21px;
+    height: 21px;
+    visibility: visible;
 }
 
 .card__save_delete {
-    display: none;
-    width: 20px;
-    height: 20px;
+    padding: 0;
+    cursor: pointer;
+    visibility: hidden;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     border: 0;
-    background-image: url(../../images/delete.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 50%;
     position: absolute;
     top: 14px;
     right: 14px;
-    cursor: pointer;
+    border-radius: 30px;
+    background-image: url('../../images/delete.png');
+    background-color: transparent;
+    width: 21px;
+    height: 21px;
 }
 
 .card__save:hover {
@@ -94,12 +94,17 @@
 .card:hover .card__save {
     visibility: visible;
 }
+.card_saved:hover .card__save_delete {
+    visibility: visible;
+}
 
 @media screen and (max-width: 900px) {
     .card {
         width: 339px;
     }
-
+    .card_saved {
+        width: 339px;
+    }
     .card__image {
         width: 339px;
         height: 190px;
@@ -111,13 +116,24 @@
     .card__block {
         margin-top: 21px;
     }
+    .card__save:hover {
+        opacity: 1;
+    }
+    .card__save{
+        visibility: visible;
+    }
+    .card__save_delete{
+        visibility: visible;
+    }
 }
 
 @media screen and (max-width: 750px) {
     .card {
         width: 300px;
     }
-
+    .card_saved {
+        width: 300px;
+    }
     .card__image {
         width: 300px;
         height: 168px;

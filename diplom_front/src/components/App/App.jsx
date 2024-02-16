@@ -200,6 +200,7 @@ function App() {
               <ProtectedRouteElement
                 loggedIn={loggedIn}
                 element={Profile}
+                error={profileError}
                 answer={answer}
                 signOut={signOut}
                 handleProfileButton={handleProfileButton}

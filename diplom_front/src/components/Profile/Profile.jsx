@@ -34,10 +34,8 @@ function Profile(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log('ok')
         setIsButton(true);
-
-        props.handleProfileSubmit(values);
+        props.handleProfileButton(values);
 
     }
   return (

@@ -51,9 +51,17 @@ function MoviesCard({
       </a>
       <button
         onClick={location.pathname === "/movies" ? handleSave : handleDelete}
-        className={`${location.pathname === "/movies" ? "card__save" : ""} ${
-          isSaved && location.pathname === "/movies" ? "card__save_active" : ""
-        } ${location.pathname === "/saved-movies" ? "card__save_delete" : ""}`}
+        className={`${
+          location.pathname === "/movies" ? "card__save" : ""
+        } ${
+          isSaved && location.pathname === "/movies"
+            ? "card__save_saved"
+            : ""
+        } ${
+          location.pathname === "/saved-movies"
+            ? "card__save_delete"
+            : ""
+        }`}
       >{`${isSaved ? "" : "Сохранить"}`}</button>
       <div className="card__block">
         <h3 className="card__subtitle">

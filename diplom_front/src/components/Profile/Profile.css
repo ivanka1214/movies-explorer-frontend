@@ -76,6 +76,9 @@
     margin-bottom: 16px;
     cursor: pointer;
 }
+.profile__change-button:hover{
+    opacity: 0.8;
+}
 .profile__button:hover{
     opacity: 0.8;
 }
@@ -119,6 +122,9 @@
     .profile{
         padding-bottom: 269px;
     }
+    .profile__change-button{
+        margin-top: 193px;
+    }
 }
 @media screen and (max-width: 769px){
     
@@ -137,4 +143,9 @@
     .profile{
         padding-bottom: 40px;
     }
+    .profile__change-button{
+        margin-top: 361px;
+        width: 260px;
+    }
+    
 }

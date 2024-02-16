@@ -3,7 +3,7 @@ import search from "../../images/icon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Resize from "../../utils/Resize";
+import useResize from "../../utils/useResize";
 
 function SearchForm({
   onSubmit,
@@ -15,7 +15,7 @@ function SearchForm({
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
 
-  const size = Resize();
+  const size = useResize();
   const location = useLocation();
   const input = document.getElementById("movie");
 

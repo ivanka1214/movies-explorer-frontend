@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Resize from "../../utils/Resize";
+import useResize from "../../utils/useResize";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
@@ -15,7 +15,7 @@ function MoviesCardList({
   onCardDelete,
   updateMoviesList,
 }) {
-  const size = Resize();
+  const size = useResize();
   const location = useLocation();
 
   const [moviesStart, setMoviesStart] = useState(0);

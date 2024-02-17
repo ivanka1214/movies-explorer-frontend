@@ -44,7 +44,6 @@ function SearchForm({
 
   function handleSavedSubmit(e) {
     e.preventDefault();
-
     if (input.value === "") {
       setError("Нужно ввести ключевое слово");
     } else {
@@ -84,9 +83,9 @@ function SearchForm({
             placeholder="Фильм"
             type="text"
             name="movie"
-            required
-            minLength="2"
-            maxLength="40"
+            // required
+            // minLength="2"
+            // maxLength="40"
           />
           <div className="search__button">
             <div className="search__submit_container">

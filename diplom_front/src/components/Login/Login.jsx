@@ -25,6 +25,7 @@ function Login(props) {
               onChange={handleChange}
               id="login-email"
               type="email"
+              pattern='\S+@\S+\.\S+'
               name="email"
               minLength="2"
               maxLength="40"

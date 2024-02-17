@@ -43,6 +43,7 @@ function Register(props) {
               onChange={handleChange}
               id="register-email"
               type="email"
+              pattern='\S+@\S+\.\S+'
               required
               name="email"
               minLength="2"

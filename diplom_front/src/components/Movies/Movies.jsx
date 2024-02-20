@@ -56,6 +56,7 @@ function Movies({
   }
 
   function searchResult() {
+
     if (isFilterOn) {
       const shortMovies = movies.filter((item) => {
         return item.duration < 40;

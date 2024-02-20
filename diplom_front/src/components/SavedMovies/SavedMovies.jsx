@@ -9,8 +9,9 @@ function SavedMovies({ savedMovies, onCardDelete }) {
   const [isSearched, setIsSearched] = useState(false);
   const [searchError, setSearchError] = useState("");
   const [isFilterOn, setFilterOn] = useState();
-
+  const [searchQuery, setSearchQuery] = useState("");
   function handleSubmit(value) {
+    setSearchQuery(value.toLowerCase());
     if (isFilterOn) {
       const shortSavedFilteredMovies = filteredMovies.filter((item) => {
         return (
@@ -48,15 +49,34 @@ function SavedMovies({ savedMovies, onCardDelete }) {
   function shortSavedMoviesSearch(value) {
     setSearchError(false);
     setFilterOn(value);
+    
     if (value === true) {
-      const shortSavedMovies = savedMovies.filter((item) => {
-        return item.duration < 40;
-      });
-      setIsSearched(true);
-      setFilteredMovies(shortSavedMovies);
+      let filteredResults;
+      if (isSearched) {
+        filteredResults = savedMovies.filter((item) => {
+          return (
+            item.duration < 40 &&
+            (item.nameRu.toLowerCase().includes(searchQuery) || item.nameEn.toLowerCase().includes(searchQuery))
+          );
+        });
+      } else {
+        filteredResults = savedMovies.filter((item) => {
+          return item.duration < 40;
+        });
+      }
+      setFilteredMovies(filteredResults);
     } else {
-      setFilteredMovies(savedMovies);
-      setIsSearched(false);
+      if (isSearched) {
+        const filteredResults = savedMovies.filter((item) => {
+          return (
+            item.nameRu.toLowerCase().includes(searchQuery) ||
+            item.nameEn.toLowerCase().includes(searchQuery)
+          );
+        });
+        setFilteredMovies(filteredResults);
+      } else {
+        setFilteredMovies(savedMovies);
+      }
     }
   }
 

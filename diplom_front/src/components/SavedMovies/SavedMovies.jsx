@@ -13,10 +13,10 @@ function SavedMovies({ savedMovies, onCardDelete }) {
   function handleSubmit(value) {
     setSearchQuery(value.toLowerCase());
     if (isFilterOn) {
-      const shortSavedFilteredMovies = filteredMovies.filter((item) => {
-        return (
-          item.nameRu.toLowerCase().includes(value) ||
-          item.nameEn.toLowerCase().includes(value)
+      const shortSavedFilteredMovies = savedMovies.filter((item) => {
+        return ( item.duration < 40 &&
+          (item.nameRu.toLowerCase().includes(value) ||
+          item.nameEn.toLowerCase().includes(value))
         );
       });
 

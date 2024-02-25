@@ -19,24 +19,25 @@ function Movies({
   const [searchError, setSearchError] = useState(false);
 
   const size = useResize();
-
   useEffect(() => {
-    searchResult();
-  }, [movies, isFilterOn]);
-
-  useEffect(() => {
+    readLocalStorageData();
+  }, []);
+ 
+  function readLocalStorageData() {
     if (localStorage.getItem("foundMovies")) {
       setFoundMovies(JSON.parse(localStorage.getItem("foundMovies")));
       setIsMovies(true);
     }
-  }, []);
-
+  
+    if (localStorage.getItem("checkbox")) {
+      setFilterOn(true);
+    }
+  }
   useEffect(() => {
     if (localStorage.getItem("checkbox")) {
       setFilterOn(true);
     }
   }, []);
-
   function handleSearch() {
     setSearchError(false);
     if (movies.length > 0) {
@@ -56,22 +57,24 @@ function Movies({
   }
 
   function searchResult() {
-
+    // Добавьте проверку на наличие данных в localStorage
+    if (!localStorage.getItem("request")) return;
+  
     if (isFilterOn) {
       const shortMovies = movies.filter((item) => {
         return item.duration < 40;
       });
-
+  
       const shortMoviesResult = shortMovies.filter((item) => {
         return (
           item.nameRU.toLowerCase().includes(localStorage.getItem("request")) ||
           item.nameEN.toLowerCase().includes(localStorage.getItem("request"))
         );
       });
-
+  
       setFoundMovies(shortMoviesResult);
       localStorage.setItem("foundMovies", JSON.stringify(shortMoviesResult));
-
+  
       if (shortMoviesResult.length === 0) {
         setSearchError(true);
       } else {
@@ -84,10 +87,10 @@ function Movies({
           item.nameEN.toLowerCase().includes(localStorage.getItem("request"))
         );
       });
-
+  
       setFoundMovies(searchResult);
       localStorage.setItem("foundMovies", JSON.stringify(searchResult));
-
+  
       if (searchResult.length === 0) {
         setSearchError(true);
       } else {
@@ -95,7 +98,6 @@ function Movies({
       }
     }
   }
-
   function searchShort() {
     const shortMoviesResult = foundMovies.filter((item) => {
       return (
@@ -104,6 +106,7 @@ function Movies({
       );
     });
     setFoundMovies(shortMoviesResult);
+    localStorage.setItem("foundMovies", JSON.stringify(shortMoviesResult));
   }
   return (
     <>

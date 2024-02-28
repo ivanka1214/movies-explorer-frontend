@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 function FilterCheckbox(props) {
-  const location = useLocation();
+  // const location = useLocation();
   useEffect(() => {
     if (
-      location.pathname === "/movies" &&
+      // location.pathname === "/movies" &&
       localStorage.getItem("checkbox", "true")
     ) {
       document.getElementById("short-movie").checked = true;
@@ -13,20 +13,18 @@ function FilterCheckbox(props) {
     }
   }, []);
 
-  function Filter(value) {
-    if (location.pathname === "/movies") {
+  function filter(value) {
+    // if (location.pathname === "/movies") {
       localStorage.setItem("checkbox", value);
-      return props.shortMovies(value);
-    } else {
-      return props.shortMovies(value);
-    }
+    // }
+    return props.shortMovies(value);
   }
 
   return (
     <section className={`${props.class}`}>
       <input
         className="checkbox-invisible"
-        onChange={(e) => Filter(e.target.checked)}
+        onChange={(e) => filter(e.target.checked)}
         type="checkbox"
         name="short-movie"
         id="short-movie"

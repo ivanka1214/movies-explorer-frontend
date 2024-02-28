@@ -7,9 +7,7 @@ import Preloader from "../Preloader/Preloader";
 function MoviesCardList({
   foundMovies,
   isLoading,
-  button,
   error,
-  searchError,
   onCardSave,
   savedMovies,
   onCardDelete,
@@ -62,13 +60,13 @@ function MoviesCardList({
       ) : (
         ""
       )}
-      {searchError ? (
+      {!foundMovies.length ? (
         <span className="movies-container__error">Ничего не найдено</span>
       ) : (
         ""
       )}
       <div className="movies_list">
-        {location.pathname === "/movies" &&
+        {
         foundMovies.length > 0 &&
         !isLoading &&
         !error
@@ -79,11 +77,13 @@ function MoviesCardList({
                   onCardSave={onCardSave}
                   key={card.id}
                   card={card}
+                  onCardDelete={onCardDelete}
+                  updateMoviesList={updateMoviesList}
                 ></MoviesCard>
               );
             })
           : ""}
-        {location.pathname === "/saved-movies"
+        {/* {location.pathname === "/saved-movies"
           ? savedMovies.map((card) => {
               return (
                 <MoviesCard
@@ -95,7 +95,7 @@ function MoviesCardList({
                 ></MoviesCard>
               );
             })
-          : ""}
+          : ""} */}
       </div>
       {location.pathname === "/movies" && foundMovies.length > moviesShow ? (
         <button

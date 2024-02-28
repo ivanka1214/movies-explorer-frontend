@@ -7,9 +7,6 @@ import useResize from "../../utils/useResize";
 
 function SearchForm({
   onSubmit,
-  shortMovies,
-  onSavedMoviesSubmit,
-  shortSavedMoviesSearch,
   isLoading,
 }) {
   const [value, setValue] = useState("");
@@ -17,7 +14,6 @@ function SearchForm({
 
   const size = useResize();
   const location = useLocation();
-  const input = document.getElementById("movie");
 
   useEffect(() => {
     setError("");
@@ -28,52 +24,40 @@ function SearchForm({
   }, []);
 
   function handleSubmit(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
-    if (input.value === "") {
+    if (value === "") {
       setError("Нужно ввести ключевое слово");
     } else {
-      localStorage.setItem(
-        "request",
-        document.getElementById("movie").value.toLowerCase()
-      );
+      localStorage.setItem("request", value.toLowerCase());
       setError("");
       onSubmit(value.toLowerCase());
     }
   }
 
-  function handleSavedSubmit(e) {
-    e.preventDefault();
-    if (input.value === "") {
-      setError("Нужно ввести ключевое слово");
-    } else {
-      setError("");
-      onSavedMoviesSubmit(input.value.toLowerCase());
-    }
-  }
-
   function shortMoviesSearch(value) {
-    if (location.pathname === "/movies") {
-      shortMovies(value);
-    } else {
-      shortSavedMoviesSearch(value);
+    if (value === false) {
+      localStorage.removeItem("checkbox");
     }
+    handleSubmit();
   }
 
   function inputValue() {
-    if (location.pathname === "/movies" && localStorage.getItem("request")) {
-      document.getElementById("movie").value = localStorage.getItem("request");
+    const localStorageRequest = localStorage.getItem("request");
+    if (location.pathname === "/movies" && localStorageRequest) {
+      setValue(localStorageRequest);
     }
   }
+
   return (
     <section className="serach-form__container">
       <div className="search">
         <img src={search} alt="поиск" className="search__icon"></img>
         <form
           className="search__form"
-          onSubmit={
-            location.pathname === "/movies" ? handleSubmit : handleSavedSubmit
-          }
+          onSubmit={handleSubmit}
         >
           <input
             disabled={isLoading}
@@ -83,6 +67,7 @@ function SearchForm({
             placeholder="Фильм"
             type="text"
             name="movie"
+            value={value}
             // required
             // minLength="2"
             // maxLength="40"

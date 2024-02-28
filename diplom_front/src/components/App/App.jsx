@@ -24,7 +24,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [connectionError, setConnectionError] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
-  const [isMovies, setIsMovies] = useState(false);
   const [answer, setAnswer] = useState(false);
 
   const navigate = useNavigate();
@@ -34,9 +33,6 @@ function App() {
   useEffect(() => {
     checkToken();
     getSavedMovies();
-    if (localStorage.getItem("foundMovies")) {
-      setIsMovies(true);
-    }
   }, []);
 
   function handleLogin({ email, password }) {
@@ -90,7 +86,6 @@ function App() {
       .then((movies) => {
         setMovies(movies);
         setIsLoading(false);
-        setIsMovies(true);
       })
       .catch((error) => {
         setConnectionError(true);
@@ -173,7 +168,6 @@ function App() {
               <ProtectedRouteElement
                 loggedIn={loggedIn}
                 element={Movies}
-                isMovies={isMovies}
                 savedMovies={savedMovies}
                 error={connectionError}
                 onCardSave={handleSaveCard}
@@ -191,6 +185,11 @@ function App() {
                 element={SavedMovies}
                 onCardDelete={handleDeleteCard}
                 savedMovies={savedMovies}
+                error={connectionError}
+                onCardSave={handleSaveCard}
+                movies={movies}
+                isLoading={isLoading}
+                onSearch={getMovies}
               />
             }
           ></Route>

@@ -5,7 +5,7 @@ function FilterCheckbox(props) {
   useEffect(() => {
     if (
       // location.pathname === "/movies" &&
-      localStorage.getItem("checkbox", "true")
+      localStorage.getItem(props.checkboxParamName, "true")
     ) {
       document.getElementById("short-movie").checked = true;
     } else {
@@ -15,7 +15,7 @@ function FilterCheckbox(props) {
 
   function filter(value) {
     // if (location.pathname === "/movies") {
-      localStorage.setItem("checkbox", value);
+      localStorage.setItem(props.checkboxParamName, value);
     // }
     return props.shortMovies(value);
   }

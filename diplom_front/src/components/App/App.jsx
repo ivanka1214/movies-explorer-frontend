@@ -32,6 +32,7 @@ function App() {
 
   useEffect(() => {
     checkToken();
+    getMovies();
     getSavedMovies();
   }, []);
 
@@ -154,7 +155,6 @@ function App() {
     setLoggedIn(false);
     setCurrentUser({});
     navigate("/", { replace: true });
-    setMovies([]);
   }
 
   return (
@@ -173,7 +173,6 @@ function App() {
                 onCardSave={handleSaveCard}
                 movies={movies}
                 isLoading={isLoading}
-                onSearch={getMovies}
               />
             }
           ></Route>
@@ -189,7 +188,6 @@ function App() {
                 onCardSave={handleSaveCard}
                 movies={movies}
                 isLoading={isLoading}
-                onSearch={getMovies}
               />
             }
           ></Route>

@@ -2,18 +2,18 @@ import React from "react";
 import search from "../../images/icon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import useResize from "../../utils/useResize";
 
 function SearchForm({
   onSubmit,
   isLoading,
+  requestParamName,
+  checkboxParamName,
 }) {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
 
   const size = useResize();
-  const location = useLocation();
 
   useEffect(() => {
     setError("");
@@ -31,7 +31,7 @@ function SearchForm({
     if (value === "") {
       setError("Нужно ввести ключевое слово");
     } else {
-      localStorage.setItem("request", value.toLowerCase());
+      localStorage.setItem(requestParamName, value.toLowerCase());
       setError("");
       onSubmit(value.toLowerCase());
     }
@@ -39,14 +39,14 @@ function SearchForm({
 
   function shortMoviesSearch(value) {
     if (value === false) {
-      localStorage.removeItem("checkbox");
+      localStorage.removeItem(checkboxParamName);
     }
     handleSubmit();
   }
 
   function inputValue() {
-    const localStorageRequest = localStorage.getItem("request");
-    if (location.pathname === "/movies" && localStorageRequest) {
+    const localStorageRequest = localStorage.getItem(requestParamName);
+    if (localStorageRequest) {
       setValue(localStorageRequest);
     }
   }
@@ -85,6 +85,7 @@ function SearchForm({
             {size > 630 ? (
               <FilterCheckbox
                 shortMovies={shortMoviesSearch}
+                checkboxParamName={checkboxParamName}
                 class="search_checkbox"
               ></FilterCheckbox>
             ) : (
@@ -97,6 +98,7 @@ function SearchForm({
       {size <= 630 ? (
         <FilterCheckbox
           shortMovies={shortMoviesSearch}
+          checkboxParamName={checkboxParamName}
           class="checkbox-separeted"
         ></FilterCheckbox>
       ) : (

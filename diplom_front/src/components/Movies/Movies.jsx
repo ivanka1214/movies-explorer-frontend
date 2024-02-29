@@ -3,20 +3,16 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import { SHORT_MOVIE_LENGTH } from "../../constants";
 
 function Movies({
   movies,
-  onSearch,
   isLoading,
   error,
   onCardSave,
   savedMovies,
 }) {
   const [foundMovies, setFoundMovies] = useState([]);
-
-  useEffect(() => {
-    onSearch();
-  }, []);
 
   useEffect(() => {
     searchResult();
@@ -29,25 +25,14 @@ function Movies({
 
     const moviesFiltered = movies.filter((item) => {
       return (
-        (!localStorage.getItem("checkbox") || item.duration < 40) &&
+        (!localStorage.getItem("checkbox") || item.duration < SHORT_MOVIE_LENGTH) &&
         (item.nameRU?.toLowerCase().includes(request) ||
-        item.nameEN?.toLowerCase().includes(request) ||
-        item.nameRu?.toLowerCase().includes(request) ||
-        item.nameEn?.toLowerCase().includes(request))
+        item.nameEN?.toLowerCase().includes(request))
       );
     });
 
     setFoundMovies(moviesFiltered);
   }
-
-  function updateMoviesList(card) {
-    if (isSearched) {
-      const newArrey = filteredMovies.filter((i) => i._id !== card._id);
-      setFilteredMovies(newArrey);
-    }
-  }
-  console.log('savedMovies: ', savedMovies)
-  console.log('foundMovies: ', foundMovies)
 
   return (
     <>
@@ -56,16 +41,17 @@ function Movies({
         <SearchForm
           onSubmit={searchResult}
           isLoading={isLoading}
+          requestParamName="request"
+          checkboxParamName="checkbox"
         ></SearchForm>
-        <MoviesCardList
+        {localStorage.getItem('request') && <MoviesCardList
           onCardSave={onCardSave}
           savedMovies={savedMovies}
           error={error}
           isLoading={isLoading}
           foundMovies={foundMovies}
-          movies={movies}
-          updateMoviesList={updateMoviesList}
-        ></MoviesCardList>
+          useMore={true}
+        ></MoviesCardList>}
       </main>
       <Footer></Footer>
     </>

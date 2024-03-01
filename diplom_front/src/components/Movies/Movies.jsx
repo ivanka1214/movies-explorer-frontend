@@ -11,18 +11,34 @@ function Movies({
   error,
   onCardSave,
   savedMovies,
+  getMovies,
 }) {
   const [foundMovies, setFoundMovies] = useState([]);
+  
+  useEffect(() => {
+    readLocalStorageData();
+  }, []);
 
   useEffect(() => {
-    searchResult();
+    if (movies.length) {
+      searchResult();
+    }
   }, [movies]);
+
+  function readLocalStorageData() {
+    if (localStorage.getItem("foundMovies")) {
+      setFoundMovies(JSON.parse(localStorage.getItem("foundMovies")));
+    }
+  }
 
   function searchResult() {
     // Добавьте проверку на наличие данных в localStorage
     const request = localStorage.getItem("request");
     if (!request) return;
 
+    if (!movies.length) {
+      getMovies();
+    }
     const moviesFiltered = movies.filter((item) => {
       return (
         (!localStorage.getItem("checkbox") || item.duration < SHORT_MOVIE_LENGTH) &&
@@ -32,6 +48,7 @@ function Movies({
     });
 
     setFoundMovies(moviesFiltered);
+    localStorage.setItem("foundMovies", JSON.stringify(moviesFiltered));
   }
 
   return (

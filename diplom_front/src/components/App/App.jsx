@@ -32,7 +32,6 @@ function App() {
 
   useEffect(() => {
     checkToken();
-    getMovies();
     getSavedMovies();
   }, []);
 
@@ -172,6 +171,7 @@ function App() {
                 error={connectionError}
                 onCardSave={handleSaveCard}
                 movies={movies}
+                getMovies={getMovies}
                 isLoading={isLoading}
               />
             }

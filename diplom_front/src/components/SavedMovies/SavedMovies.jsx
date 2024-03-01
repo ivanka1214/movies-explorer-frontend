@@ -32,8 +32,7 @@ function SavedMovies({
   }
 
   function updateMoviesList(card) {
-    const newArrey = filteredMovies.filter((i) => i._id !== card._id);
-    setFilteredMovies(newArrey);
+    setFoundMovies(foundMovies.filter((i) => i._id !== card._id));
   }
 
   return (

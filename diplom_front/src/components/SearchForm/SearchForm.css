@@ -29,7 +29,6 @@
     height: 34px;
     width: 34px;
 }
-
 .search__input{
     border: none;
     font-size: 18px;
@@ -83,7 +82,15 @@
     flex-direction: column;
     align-items: center;
 }
-
+.search-form__span{
+    margin: 0;
+    margin-bottom: 20px;
+    color: #FF4062;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
 
 @media screen and (max-width: 900px){
     .search{

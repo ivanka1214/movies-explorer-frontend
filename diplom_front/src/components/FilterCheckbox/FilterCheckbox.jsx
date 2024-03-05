@@ -1,34 +1,20 @@
-import React, { useEffect } from "react";
-// import { useLocation } from "react-router-dom";
-function FilterCheckbox(props) {
-  // const location = useLocation();
-  useEffect(() => {
-    if (
-      // location.pathname === "/movies" &&
-      localStorage.getItem(props.checkboxParamName, "true")
-    ) {
-      document.getElementById("short-movie").checked = true;
-    } else {
-      document.getElementById("short-movie").checked = false;
-    }
-  }, []);
+import React from "react";
+function FilterCheckbox({checkboxParamName, shortMovies, className, checkbox}) {
 
   function filter(value) {
-    // if (location.pathname === "/movies") {
-      localStorage.setItem(props.checkboxParamName, value);
-    // }
-    return props.shortMovies(value);
+    localStorage.setItem(checkboxParamName, value);
+    return shortMovies(value);
   }
 
   return (
-    <section className={`${props.class}`}>
+    <section className={`${className}`}>
       <input
         className="checkbox-invisible"
         onChange={(e) => filter(e.target.checked)}
         type="checkbox"
         name="short-movie"
         id="short-movie"
-        value="short-movie"
+        defaultChecked={checkbox === 'true'}
       ></input>
       <span className="checkbox-visible"></span>
       <span className="text-checkbox">Короткометражки</span>

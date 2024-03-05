@@ -9,8 +9,10 @@ function SearchForm({
   isLoading,
   requestParamName,
   checkboxParamName,
+  useSavedState,
 }) {
   const [value, setValue] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
   const [error, setError] = useState("");
 
   const size = useResize();
@@ -20,7 +22,13 @@ function SearchForm({
   }, [value]);
 
   useEffect(() => {
-    inputValue();
+    onSubmit(value.toLowerCase(), checkbox);
+  }, [checkbox]);
+
+  useEffect(() => {
+    if (useSavedState) {
+      inputValue();
+    }
   }, []);
 
   function handleSubmit(e) {
@@ -33,21 +41,25 @@ function SearchForm({
     } else {
       localStorage.setItem(requestParamName, value.toLowerCase());
       setError("");
-      onSubmit(value.toLowerCase());
+      onSubmit(value.toLowerCase(), checkbox);
     }
   }
 
-  function shortMoviesSearch(value) {
+  function shortMoviesSearch(checkbox) {
     if (value === false) {
       localStorage.removeItem(checkboxParamName);
     }
-    handleSubmit();
+    setCheckbox(checkbox);
   }
 
   function inputValue() {
     const localStorageRequest = localStorage.getItem(requestParamName);
     if (localStorageRequest) {
       setValue(localStorageRequest);
+    }
+    const localStorageCheckbox = localStorage.getItem(checkboxParamName);
+    if (localStorageCheckbox) {
+      setCheckbox(localStorageCheckbox);
     }
   }
 
@@ -68,9 +80,6 @@ function SearchForm({
             type="text"
             name="movie"
             value={value}
-            // required
-            // minLength="2"
-            // maxLength="40"
           />
           <div className="search__button">
             <div className="search__submit_container">
@@ -84,9 +93,11 @@ function SearchForm({
             </div>
             {size > 630 ? (
               <FilterCheckbox
-                shortMovies={shortMoviesSearch}
+                shortMovies={(checkbox) => shortMoviesSearch(checkbox)}
                 checkboxParamName={checkboxParamName}
-                class="search_checkbox"
+                className="search_checkbox"
+                useSavedState={useSavedState}
+                checkbox={checkbox}
               ></FilterCheckbox>
             ) : (
               ""
@@ -97,9 +108,10 @@ function SearchForm({
       <span className="search-form__span">{error ?? ""}</span>
       {size <= 630 ? (
         <FilterCheckbox
-          shortMovies={shortMoviesSearch}
+          shortMovies={(checkbox) => shortMoviesSearch(checkbox)}
           checkboxParamName={checkboxParamName}
-          class="checkbox-separeted"
+          className="checkbox-separeted"
+          checkbox={checkbox}
         ></FilterCheckbox>
       ) : (
         ""

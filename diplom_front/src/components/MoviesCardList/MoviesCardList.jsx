@@ -45,52 +45,45 @@ function MoviesCardList({
       return item.movieId === (card.id || card.movieId);
     });
   }
+
   return (
     <section className="movies_block">
-      {isLoading ? <Preloader></Preloader> : ""}
-      {error ? (
+      {isLoading && <Preloader></Preloader>}
+      {error && (
         <span className="movies-container__error">
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз
         </span>
-      ) : (
-        ""
       )}
-      {!foundMovies.length ? (
-        <span className="movies-container__error">Ничего не найдено</span>
-      ) : (
-        ""
-      )}
-      <div className="movies_list">
-        {
-        foundMovies.length > 0 &&
-        !isLoading &&
-        !error
-          ? (useMore ? foundMovies.slice(0, moviesShow): foundMovies).map((card) => {
-              return (
-                <MoviesCard
-                  isSaved={isMovieSaved(card, savedMovies)}
-                  onCardSave={onCardSave}
-                  key={card.id}
-                  card={card}
-                  onCardDelete={onCardDelete}
-                  updateMoviesList={updateMoviesList}
-                ></MoviesCard>
-              );
-            })
-          : ""}
-      </div>
-      {useMore && foundMovies.length > moviesShow ? (
-        <button
-          onClick={addCards}
-          className="movies_list__button"
-          type="submit"
-        >
-          Ещё
-        </button>
-      ) : (
-        ""
-      )}
+      {!isLoading && !error &&
+        (<>
+          <div className="movies_list">
+            {
+            !!foundMovies.length && (useMore ? foundMovies.slice(0, moviesShow): foundMovies).map((card) => {
+                  return (
+                    <MoviesCard
+                      isSaved={isMovieSaved(card, savedMovies)}
+                      onCardSave={onCardSave}
+                      key={card.id}
+                      card={card}
+                      onCardDelete={onCardDelete}
+                      updateMoviesList={updateMoviesList}
+                    ></MoviesCard>
+                  );
+                })}
+           {!foundMovies.length && <span className="movies-container__error">Ничего не найдено</span>}      
+          </div>
+          {useMore && foundMovies.length > moviesShow && (
+            <button
+              onClick={addCards}
+              className="movies_list__button"
+              type="submit"
+            >
+              Ещё
+            </button>
+          )}
+          </>)
+      }
     </section>
   );
 }

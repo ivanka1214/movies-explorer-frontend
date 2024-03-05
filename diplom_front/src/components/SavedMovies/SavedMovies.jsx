@@ -17,13 +17,11 @@ function SavedMovies({
     searchResult();
   }, [savedMovies]);
 
-  function searchResult() {
-    const request = localStorage.getItem("requestSaved");
-
+  function searchResult(request, checkbox) {
     const moviesFiltered = savedMovies.filter((item) => {
       return (
-        (!localStorage.getItem("checkboxSaved") || item.duration < SHORT_MOVIE_LENGTH) &&
-        (!localStorage.getItem("requestSaved") || (item.nameRu?.toLowerCase().includes(request) ||
+        (!checkbox || item.duration < SHORT_MOVIE_LENGTH) &&
+        (!request || (item.nameRu?.toLowerCase().includes(request) ||
         item.nameEn?.toLowerCase().includes(request)))
       );
     });
@@ -40,20 +38,21 @@ function SavedMovies({
       <Header page="movie"></Header>
       <main className="page">
         <SearchForm
-          onSubmit={searchResult}
+          onSubmit={(request, checkbox) => searchResult(request, checkbox)}
           isLoading={isLoading}
           requestParamName="requestSaved"
           checkboxParamName="checkboxSaved"
+          useSavedState={false}
         ></SearchForm>
-        <MoviesCardList
-          onCardSave={onCardSave}
-          savedMovies={savedMovies}
-          error={error}
-          isLoading={isLoading}
-          foundMovies={foundMovies}
-          updateMoviesList={updateMoviesList}
-          onCardDelete={onCardDelete}
-          useMore={false}
+          <MoviesCardList
+            onCardSave={onCardSave}
+            savedMovies={savedMovies}
+            error={error}
+            isLoading={isLoading}
+            foundMovies={foundMovies}
+            updateMoviesList={updateMoviesList}
+            onCardDelete={onCardDelete}
+            useMore={false}
         ></MoviesCardList>
       </main>
       <Footer></Footer>

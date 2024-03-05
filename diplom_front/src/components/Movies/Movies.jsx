@@ -34,17 +34,17 @@ function Movies({
   function searchResult() {
     // Добавьте проверку на наличие данных в localStorage
     const request = localStorage.getItem("request");
+    const checkbox = localStorage.getItem("checkbox") || 'false'
     if (!request) return;
 
     if (!movies.length) {
       getMovies();
     }
+
     const moviesFiltered = movies.filter((item) => {
-      return (
-        (!localStorage.getItem("checkbox") || item.duration < SHORT_MOVIE_LENGTH) &&
-        (item.nameRU?.toLowerCase().includes(request) ||
+      return (checkbox === 'false' || item.duration < SHORT_MOVIE_LENGTH) &&
+      (item.nameRU?.toLowerCase().includes(request) ||
         item.nameEN?.toLowerCase().includes(request))
-      );
     });
 
     setFoundMovies(moviesFiltered);
@@ -60,14 +60,16 @@ function Movies({
           isLoading={isLoading}
           requestParamName="request"
           checkboxParamName="checkbox"
+          useSavedState={true}
         ></SearchForm>
-        {localStorage.getItem('request') && <MoviesCardList
-          onCardSave={onCardSave}
-          savedMovies={savedMovies}
-          error={error}
-          isLoading={isLoading}
-          foundMovies={foundMovies}
-          useMore={true}
+        {localStorage.getItem('request') && 
+          <MoviesCardList
+            onCardSave={onCardSave}
+            savedMovies={savedMovies}
+            error={error}
+            isLoading={isLoading}
+            foundMovies={foundMovies}
+            useMore={true}
         ></MoviesCardList>}
       </main>
       <Footer></Footer>
